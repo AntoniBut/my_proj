@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<style>
+form {
+    margin: auto;
+    width: 50%;
+}
+
+.result {
+    margin: auto;
+    width: 50%;
+    border: 1px solid #ccc;
+    }
+</style>
+
+<head>
+    <title>Прогнозирование сварного шва</title>
+</head>
+
+<form action="{{url_for('main')}}" method="POST">
+    <fieldset>
+        <legend>Введите значения</legend>
+        Сварочный ток (IW)
+        <input name="IW" type="number" required>
+        <br>
+        Ток фокусировки электронного пучка (IF)
+        <input name="IF" type="number" required>
+        <br>
+        Скорость сварки (VW)
+        <input name="VW" type="number" required>
+        <br>
+        Расстояние от поверхности образцов до электронно-оптической системы (FP)
+        <input name="FP" type="number" required>
+        <br>
+        <input type="submit">
+    </fieldset>
+</form>
+
+<div class="result" align="center">
+    {% if result %}
+        <br>
+        <p style="font-size:50px">
+        Прогнозные значения сварного шва
+        </p>
+        <p style="font-size:50px">{{result}}</p>
+    {% endif %}
+</div>
